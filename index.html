@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/countdown.js"></script>
+    <script>
+        function refreshPage() {
+          location.reload();
+        }
+      </script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>fsociety</title>
+</head>
+<body>
+
+<div id="rectangle">
+    <p><b>#OPdailyallowance</b></p>
+    <br>
+    <p><b>Your files are encrypted</b></p>
+    <br>
+    <p>To get the key to decrypt files, you have to pay <span>5.9 million USD.</span> If payment is not made by <span>
+      <span id="today-or-tomorrow"></span>
+      <script>
+        const SPAN_ID = "today-or-tomorrow";
+        const ONE_DAY_IN_MS = 86400000; // Number of milliseconds in one day
+
+        function setTodayIfTomorrow() {
+          let span = document.getElementById(SPAN_ID);
+          if (span) {
+            let dateStr = span.textContent.trim();
+            let targetDate = new Date(dateStr);
+            let currentDate = new Date();
+            if (targetDate.getTime() - currentDate.getTime() <= ONE_DAY_IN_MS) {
+              span.textContent = "today";
+              localStorage.setItem("hasRun", "true"); // Mark as already run
+            }
+            else {
+              span.textContent = "tomorrow";
+            }
+          }
+        }
+
+        // Check if already run before
+        if (!localStorage.getItem("hasRun")) {
+          window.onload = setTodayIfTomorrow;
+        }
+
+      </script>
+      <span id="time-of-day"></span></span> we'll brick your entire system.</p>
+    <script>
+      if (!localStorage.getItem("time-of-day")) {
+      // Calculate the time of day for 24 hours from now
+      var now = new Date();
+      var future = new Date(now.getTime() + (24 * 60 * 60 * 1000));
+      var hour = future.getHours();
+      var timeOfDay;
+      if (hour < 12) {
+        timeOfDay = "morning";
+      } else if (hour < 18) {
+        timeOfDay = "afternoon";
+      } else {
+        timeOfDay = "night";
+      }
+      
+      // Store the calculated time of day in localStorage
+      localStorage.setItem("time-of-day", timeOfDay);
+      }
+      
+      // Display the time of day from localStorage in an HTML span tag
+      document.getElementById("time-of-day").innerHTML = localStorage.getItem("time-of-day");
+      
+    </script>
+
+    <br>
+    <p>More instructions forthcoming - fsociety.</p>
+    <br>
+    <div id="countdown"></div>
+    <br>
+    <hr>
+
+    <div class="container">
+        <p>Your system: <span id="os"></span></p>
+        <script>
+            // Get the operating system name
+            var os = navigator.platform;
+    
+            // Display the operating system name in HTML
+            document.getElementById("os").innerHTML = os;
+        </script>
+
+        <p>First connect IP: 
+            <span id="ip"></span>
+            <!-- <span class="loading">Connecting...</span> -->
+        </p>
+
+        <script>
+            // Fetch the IP address from the ipify API
+            fetch('https://api.ipify.org/?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    // Display the IP address in HTML
+                    document.getElementById("ip").innerHTML = data.ip;
+                })
+                .catch(error => {
+                    console.error(error);
+                    // Display a fallback message if the API fails
+                    document.getElementById("ip").innerHTML = "192.168.1.1";
+                });
+        </script>
+        <!-- <script>
+            // Wait 3 seconds before changing the text
+            setTimeout(function() {
+                document.querySelector('.loading').textContent = '192.168.1.1';
+            }, 3000);
+        </script> -->
+        <p>Total encrypted: <span>3,154</span> encrypted files.</p>
+      </div>
+    
+    
+
+
+</div>
+
+<div class="button-row">
+    <button onclick="refreshPage()">Refresh</button>
+    <button><span>Payment</span></button>
+    <button>FAQ</button>
+    <button id="file-button" onclick="getFile()"><span>Decrypt one file for free (<span id="counter">1</span>)</span></button>
+    <!-- <button onclick="document.getElementById('fileInput').click()"><span>Decrypt one file for free</span></button> -->
+    <script>
+        let clicked = localStorage.getItem('fileButtonClicked'); // check if the button has been clicked before
+      
+        if (clicked) { // if clicked, disable the button and remove the counter
+          document.getElementById('file-button').disabled = true;
+          document.getElementById('counter').innerHTML = '0';
+        }
+      
+        function getFile() {
+          if (!clicked) { // only allow the file prompt to show if the button has not been clicked
+            clicked = true; // set clicked to true to prevent further clicks
+            localStorage.setItem('fileButtonClicked', true); // store the clicked flag in local storage
+            document.getElementById('file-button').disabled = true; // disable the button
+            document.getElementById('counter').innerHTML = '0'; // remove the counter
+            let fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.addEventListener('change', () => {
+              console.log('File selected:', fileInput.files[0]);
+            });
+            fileInput.click();
+          }
+        }
+      </script>
+
+<!-- <input type="file" id="fileInput" style="display:none"> -->
+
+    <button>Support</button>
+  </div>
+  <br>
+  <img src="images/jester-actual.png" alt="Jester" draggable="false" oncontextmenu="return false;">
+<br>
+<footer>
+
+    <p id="jester">J&Xi;ST&Xi;R &#10026; &Delta;C&#x166;U&Delta;L&sup3;&sup3;&deg;&sup1;</p>
+    <br>
+    <p>There's an unequal amount of good and bad in most things. The trick is to figure out the ratio and act accordingly.</p>
+
+
+</footer>
+    
+</body>
+</html>

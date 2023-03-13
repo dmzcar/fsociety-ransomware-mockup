@@ -1,0 +1,160 @@
+#rectangle {
+    width: 60%;
+    margin: 0 auto;
+    background-color: white;
+    text-align: center;
+  }
+
+body {
+    background-color: #377fad;
+
+}
+
+p {
+    text-align: center;
+    font-size: 13px;
+    max-width: 50%;
+    margin: auto;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .container p {
+    flex: 1;
+    text-align: center;
+  }
+  
+  span {
+    color: rgb(226, 0, 0);
+  }
+
+  #countdown {
+    font-weight: bold;
+    font-size: 26px;
+  }
+
+#rectangle {
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.button-row {
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .button-row button {
+    display: inline-block;
+    margin: 0px;
+  }
+  
+  button {
+    font-size: 13px;
+    border-radius: 0px;
+    border: 1px solid black;
+    padding: 3px 5px;
+    cursor: pointer;
+  }
+
+  img {
+    display: block;
+    margin: 0 auto;
+    width: 270px;
+  }
+  
+  footer{
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+    max-width: 60%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  /* Center the button */
+  .upload-btn {
+    display: block;
+    /* cursor: pointer; */
+}
+
+/* Grey out the button when it is disabled */
+.upload-btn.disabled {
+    color: #666;
+    cursor: default;
+    user-select: none;
+}
+
+
+/* Style for the counter */
+.counter {
+    display: inline-block;
+    margin-left: 5px;
+    font-size: 0.8em;
+    vertical-align: middle;
+}
+
+
+
+  /* Media query for desktop screens */
+@media only screen and (min-width: 1024px) {
+    /* CSS styles for desktop screens */
+    .container {
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    #rectangle {
+        width: 60%;
+      }
+
+      p {
+        max-width: 50%;
+    }
+
+  }
+  
+  /* Media query for tablets */
+  @media only screen and (min-width: 768px) and (max-width: 1023px) {
+    /* CSS styles for tablets */
+    .container {
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    #rectangle {
+        width: 80%;
+      }
+
+    
+      p {
+        max-width: 70%;
+    }
+  }
+  
+  /* Media query for mobile phones */
+  @media only screen and (max-width: 767px) {
+    /* CSS styles for mobile phones */
+    .container {
+      width: 100%;
+      margin: 0;
+      padding: 10px;
+    }
+
+    #rectangle {
+        width: 90%;
+      }
+
+    
+      p {
+        max-width: 100%;
+    }
+
+    footer{
+        max-width: 90%;
+      }
+
+  }
+  
